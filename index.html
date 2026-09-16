@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <style>
+        .container {
+            border: 2px solid black;
+            width: 350px;
+            padding: 25px;
+            border-radius: 20px;
+            background-color: rgb(230, 226, 222);
+            max-width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 200px;
+
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+
+    </style>
+</head>
+
+<body style="background-color: rgb(244, 255, 244)">
+    <div class="container">
+        <h1>BMI Calculator</h1>
+
+        <p>Height (in cm)</p>
+
+        <input type="number" id="height" placeholder="e.g. 175" />
+
+        <p>Weight (in kg)</p>
+
+        <input type="number" id="weight" placeholder="e.g. 70" />
+
+        <br /><br />
+        <button id="btn" onclick="calculateBMI()">Calculate</button>
+
+        <div id="result" style="margin-top: 15px; font-weight: bold;"></div>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById("height").value);
+            const weight = parseFloat(document.getElementById("weight").value);
+            const result = document.getElementById("result");
+
+            function calculateBMI(weightKg, heightMeters) {
+                // Validate inputs
+                if (weightKg <= 0 || heightMeters <= 0) {
+                    return "Invalid input. Weight and height must be greater than zero.";
+                }
+
+            }
+
+
+
+
+
+            const bmi = (weight / Math.pow(height / 100, 2)).toFixed(2);
+
+            let category = "";
+            if (bmi < 18.5) {
+                category = "Underweight";
+            } else if (bmi < 24.9) {
+                category = "Normal Weight";
+            } else if (bmi < 29.9) {
+                category = "Overweight";
+            } else
+                category = "Obesity";
+
+
+            result.innerText = `BMI: ${bmi} (${category})`;
+
+            console.log(calculateBMI(70, 1.75));
+
+
+        }
+
+    </script>
+</body>
+
+</html>
